@@ -1,10 +1,23 @@
+import numpy as np
 from sklearn import datasets
-import  Perceptron
+import Perceptron
 import pandas as pd
 import Plotter
 import Form
 import Pre
-
+import matplotlib.pyplot as plt
+###//todo preprocessing ,,,get values from form .curent for index .get for value
+###//todo X values of [1,rest of data] 1 for bias ,,, Y for class c1 ==1 c2 == -1
+###//todo confusion matrix implement from scratch ,,, then order all function as in slides
+weights = Perceptron.train_weights([[1,5.1,3.5],[1,4.9,3],[1,4.7,3.2],[1,4.6,3.1],[1,5,3.6],[1,5.4,3.9],
+                                    [1,7,3.2],[1,6.4,3.2],[1,6.9,3.1],[1,5.5,3.3],[1,6.5,2.8],[1,5.7,2.8]],
+                                   [1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1], 0.1, 8)
+accuracy = Perceptron.test_Data([[1,5.1,3.5],[1,4.9,3],[1,4.7,3.2],[1,4.6,3.1],[1,5,3.6],[1,5.4,3.9],
+                                    [1,7,3.2],[1,6.4,3.2],[1,6.9,3.1],[1,5.5,3.3],[1,6.5,2.8],[1,5.7,2.8]],
+                                   [1,1,1,1,1,1,-1,-1,-1,-1,-1,-1],weights)
+x=np.array([[1,0,1],[1,1,0]])
+plt.plot(x, weights.dot(x.T))
+plt.show()
 Iris = datasets.load_iris()
 Plotter.DrawIris(Iris)
 
@@ -37,4 +50,3 @@ testIris = iris[30:50]
 testIris2 = iris[80:100]
 testIris = testIris.append(testIris2)
 
-Perceptron.train_weights(trainIris, LearningRate, Epochs)

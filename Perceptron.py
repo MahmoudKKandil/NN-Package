@@ -1,20 +1,27 @@
+import numpy as np
+
 def predict(row, weights):
-    activation = weights[0]
-    for i in range(len(row) - 1):
-        activation += weights[i + 1] * row[i]
-    return 1.0 if activation >= 0.0 else 0.0
+    result = weights.T.dot(row)
+    return 1.0 if result >= 0.0 else -1.0
 
+def train_weights(trainX, TrainY, l_rate, n_epoch):
+    trainX = np.array(trainX)
+    weights = np.random.rand(trainX.shape[1])
 
-def train_weights(train, l_rate, n_epoch):
-    weights = [0]*60
     for epoch in range(n_epoch):
-        sum_error = 0.0
-        for row in train:
+        for i, row in enumerate (trainX):
             prediction = predict(row, weights)
-            error = row[-1] - prediction
-            sum_error += error ** 2
-            weights[0] = weights[0] + l_rate * error
-            for i in range(len(row) - 1):
-                weights[i + 1] = weights[i + 1] + l_rate * error * row[i]
-        print('>epoch=%d, lrate=%.3f, error=%.3f' % (epoch, l_rate, sum_error))
+            error = TrainY[i] - prediction
+            weights = weights + l_rate * error * row
     return weights
+
+def test_Data(testX, testY, weights):
+    testX = np.array(testX)
+    weights = np.array(weights)
+
+    correct=0
+    for i, row in enumerate (testX):
+        predtected = predict(row,weights)
+        if predtected == testY[i]:correct+=1
+    accuracy = (correct/len(testX))*100
+    return accuracy

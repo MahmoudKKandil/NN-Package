@@ -20,8 +20,25 @@ def test_Data(testX, testY, weights):
     weights = np.array(weights)
 
     correct=0
+    trueP=0
+    trueNeg=0
+    FalseP=0
+    FalseNeg=0
     for i, row in enumerate (testX):
         predtected = predict(row,weights)
-        if predtected == testY[i]:correct+=1
+        #truePositive/TrueNeg
+        if predtected == testY[i]:
+            correct+=1
+            if predtected==1:
+                trueP+=1
+            else:
+                trueNeg+=1
+        #FalsePositive/FalseNegative
+        if predtected != testY[i]:
+            if predtected==1:
+                FalseP+=1
+            else:
+                FalseNeg+=1
+
     accuracy = (correct/len(testX))*100
-    return accuracy
+    return accuracy,trueP,FalseP,FalseNeg,trueNeg

@@ -7,7 +7,7 @@ def Task1MainForm():
     Form1.geometry("400x450")
     Form1.resizable(False, False)
     Form1.title("Perceptron learning algorithm")
-    featuresList = ['F1 sepal length (cm)', 'F2 sepal width (cm)', 'F3 petal length (cm)', 'F4 petal width (cm)']
+    featuresList = ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
     F1Label = Label(Form1, text="Choose Feature 1")
     F1Label.pack()
     chosenF1 = ttk.Combobox(Form1, values=featuresList)
@@ -20,7 +20,7 @@ def Task1MainForm():
     def fillCB2(_):
         toRemove = chosenF1.get()
         chosenF2.set('')
-        secList = ['F1 sepal length (cm)', 'F2 sepal width (cm)', 'F3 petal length (cm)', 'F4 petal width (cm)']
+        secList = ['SepalLengthCm', 'SepalWidthCm', 'PetalLengthCm', 'PetalWidthCm']
         secList.remove(toRemove)
         chosenF2['values'] = secList
     chosenF1.bind('<<ComboboxSelected>>', fillCB2)
@@ -57,4 +57,4 @@ def Task1MainForm():
     epochsTB.pack()
     biasCheckbox.pack()
     Form1.mainloop()
-    return chosenF1.get(), chosenF2.get(), chosenC1.get(), chosenC2.get(), etaTB.get(), epochsTB.get()
+    return chosenF1.get(), chosenF2.get(), chosenC1.get(), chosenC2.get(), etaTB.get(), epochsTB.get(),var1.get()

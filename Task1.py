@@ -5,48 +5,38 @@ import pandas as pd
 import Plotter
 import Form
 import Pre
+import ConfusionMatrix
 import matplotlib.pyplot as plt
 ###//todo preprocessing ,,,get values from form .curent for index .get for value
 ###//todo X values of [1,rest of data] 1 for bias ,,, Y for class c1 ==1 c2 == -1
 ###//todo confusion matrix implement from scratch ,,, then order all function as in slides
-weights = Perceptron.train_weights([[1,5.1,3.5],[1,4.9,3],[1,4.7,3.2],[1,4.6,3.1],[1,5,3.6],[1,5.4,3.9],
-                                    [1,7,3.2],[1,6.4,3.2],[1,6.9,3.1],[1,5.5,3.3],[1,6.5,2.8],[1,5.7,2.8]],
-                                   [1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1], 0.1, 8)
-accuracy = Perceptron.test_Data([[1,5.1,3.5],[1,4.9,3],[1,4.7,3.2],[1,4.6,3.1],[1,5,3.6],[1,5.4,3.9],
-                                    [1,7,3.2],[1,6.4,3.2],[1,6.9,3.1],[1,5.5,3.3],[1,6.5,2.8],[1,5.7,2.8]],
-                                   [1,1,1,1,1,1,-1,-1,-1,-1,-1,-1],weights)
-x=np.array([[1,0,1],[1,1,0]])
-plt.plot(x, weights.dot(x.T))
-plt.show()
-Iris = datasets.load_iris()
-Plotter.DrawIris(Iris)
+
+
 
 iris = pd.read_csv("Iris.csv")
-
-Feature1, Feature2, Class1, Class2, LearningRate, Epochs = Form.Task1MainForm()
+df = pd.DataFrame(iris)
+chosenF1, chosenF2, chosenC1, chosenC2, LearningRate, Epochs,bias=Form.Task1MainForm()
 LearningRate = float(LearningRate)
 Epochs = int(Epochs)
 
-if Class1 == 'Iris-setosa' and Class2 == 'Iris-versicolor':
-    NewIris = Pre.Encode(iris, 1, 2)
-elif Class1 == 'Iris-versicolor' and Class2 == 'Iris-setosa':
-    NewIris = Pre.Encode(iris, 1, 2)
-elif Class1 == 'Iris-setosa' and Class2 == 'Iris-virginica':
-    NewIris = Pre.Encode(iris, 1, 3)
-elif Class1 == 'Iris-virginica' and Class2 == 'Iris-setosa':
-    NewIris = Pre.Encode(iris, 1, 3)
-else:
-    NewIris = Pre.Encode(iris, 2, 3)
+data_train,data_test,data_trainNotShuffled = Pre.Encode(df, chosenC1, chosenC2,chosenF1, chosenF2, bias)
+Y_train=Pre.Encode2(data_train,chosenC1)
+Y_test=Pre.Encode2(data_test,chosenC1)
 
-iris = Pre.Prepro(NewIris, Feature1, Feature2)
 
-iris = iris.astype(float)
-iris['Species'] = iris['Species'].astype(int)
+weights = Perceptron.train_weights(data_train.iloc[:,0:3],Y_train, LearningRate, Epochs)
+accuracy,trueP,FalseP,FalseNeg,trueNeg = Perceptron.test_Data(data_test.iloc[:,0:3],Y_test,weights)
 
-trainIris = iris[0:30]
-trainIris2 = iris[50:80]
-trainIris = trainIris.append(trainIris2)
-testIris = iris[30:50]
-testIris2 = iris[80:100]
-testIris = testIris.append(testIris2)
+print("Accuracy: ",accuracy)
 
+# Get minimum value of a single column 'y'
+plt.scatter(data_trainNotShuffled.iloc[:30, 1], data_trainNotShuffled.iloc[:30, 2],color = 'hotpink')
+plt.scatter(data_trainNotShuffled.iloc[30:60, 1], data_trainNotShuffled.iloc[30:60, 2],color = 'blue')
+minValue = df[chosenF1].min()
+maxValue = df[chosenF1].max()
+x=np.array([minValue,maxValue])
+plt.plot(x,((-1*weights[1]*x)-weights[0])/weights[2])
+plt.show()
+Plotter.DrawIris(df)
+
+ConfusionMatrix.DrawMatrix(trueP,FalseP,FalseNeg,trueNeg)

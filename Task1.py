@@ -30,8 +30,13 @@ accuracy,trueP,FalseP,FalseNeg,trueNeg = Perceptron.test_Data(data_test.iloc[:,0
 print("Accuracy: ",accuracy)
 
 # Get minimum value of a single column 'y'
-plt.scatter(data_trainNotShuffled.iloc[:30, 1], data_trainNotShuffled.iloc[:30, 2],color = 'hotpink')
-plt.scatter(data_trainNotShuffled.iloc[30:60, 1], data_trainNotShuffled.iloc[30:60, 2],color = 'blue')
+class1=plt.scatter(data_trainNotShuffled.iloc[:30, 1], data_trainNotShuffled.iloc[:30, 2],color = 'hotpink')
+class2=plt.scatter(data_trainNotShuffled.iloc[30:60, 1], data_trainNotShuffled.iloc[30:60, 2],color = 'blue')
+plt.legend((class1, class2),
+           (chosenC1, chosenC2),
+           scatterpoints=1,
+           loc='upper left',
+           fontsize=6)
 minValue = df[chosenF1].min()
 maxValue = df[chosenF1].max()
 x=np.array([minValue,maxValue])

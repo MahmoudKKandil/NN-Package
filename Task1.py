@@ -1,5 +1,4 @@
 import numpy as np
-from sklearn import datasets
 import Perceptron
 import pandas as pd
 import Plotter
@@ -15,6 +14,7 @@ import matplotlib.pyplot as plt
 
 iris = pd.read_csv("Iris.csv")
 df = pd.DataFrame(iris)
+Plotter.DrawIris(iris)
 chosenF1, chosenF2, chosenC1, chosenC2, LearningRate, Epochs,bias=Form.Task1MainForm()
 LearningRate = float(LearningRate)
 Epochs = int(Epochs)

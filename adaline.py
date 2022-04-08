@@ -12,8 +12,8 @@ def train_weights(trainX, TrainY, l_rate, n_epoch, threshold):
 
     for epoch in range(n_epoch):
         for i, row in enumerate(trainX):
-            prediction = predict(row, weights)
-            error = TrainY[i] - prediction
+            res = weights.T.dot(row)
+            error = TrainY[i] - res
             weights = weights + l_rate * error * row
         MSE = 0
         for i, row in enumerate(trainX):

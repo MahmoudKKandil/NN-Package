@@ -1,0 +1,37 @@
+from tkinter import *
+from tkinter import ttk
+
+
+def Task3MainForm():
+    form3 = Tk()
+    form3.geometry("400x350")
+    form3.resizable(False, False)
+    form3.title("MLP using Backpropagation")
+    ActivationFunc= ['SigmoidFunction','HyperbolicTangent']
+    chosenFunct = ttk.Combobox(form3, values=ActivationFunc)
+    b = Button(form3, text="Start", command=lambda: form3.quit())
+    b.place(x=180, y=230)
+    NumOfLayersLabel = Label(form3, text="Enter number of hidden layers ")
+    NumOfNeuronsLabel = Label(form3, text="Enter number of neurons(Split by , ) ")
+    etaLabel = Label(form3, text="Enter Learning rate(eta)")
+    epochsLabel = Label(form3, text="Enter number of epochs (m)")
+    NumberOfLayersTB = Entry(form3)
+    NumberOfNeronsTB  = Entry(form3)
+    etaTB = Entry(form3)
+    epochsTB = Entry(form3)
+    var1 = IntVar()
+    biasCheckbox = ttk.Checkbutton(form3, variable=var1, text='add bias?', onvalue=1, offvalue=0)
+    NumOfLayersLabel.pack()
+    NumberOfLayersTB.pack()
+    NumOfNeuronsLabel.pack()
+    NumberOfNeronsTB.pack()
+    etaLabel.pack()
+    etaTB.pack()
+    epochsLabel.pack()
+    epochsTB.pack()
+    FuncLabel = Label(form3, text="Choose Activation Function")
+    FuncLabel.pack()
+    chosenFunct.pack()
+    biasCheckbox.pack()
+    form3.mainloop()
+    return NumberOfLayersTB.get(), NumberOfNeronsTB.get(), etaTB.get(), epochsTB.get(),var1.get(),chosenFunct.get()

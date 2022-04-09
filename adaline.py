@@ -10,17 +10,18 @@ def train_weights(trainX, TrainY, l_rate, n_epoch, threshold):
     trainX = np.array(trainX)
     weights = np.random.rand(trainX.shape[1])
 
-    for epoch in range(n_epoch):
+    for _ in range(n_epoch):
         for i, row in enumerate(trainX):
             res = weights.T.dot(row)
             error = TrainY[i] - res
-            weights = weights + l_rate * error * row
-        MSE = 0
+            weights = weights + (l_rate * error * row)
+        MSE = 0.0
+        sum = 0.0
         for i, row in enumerate(trainX):
             result = weights.T.dot(row)
             error = TrainY[i] - result
-            MSE += float(((0.5) * error * error))
-        MSE *= float((1 / trainX.size))
+            sum = sum + (error **2)
+        MSE = sum / (2*len(trainX))
         if (MSE <= threshold):
             break
 

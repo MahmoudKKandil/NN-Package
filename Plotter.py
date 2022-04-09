@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 
 
 def DrawIris(Iris):
-    fig, axs = plt.subplots(3, 2)
+    fig, axs = plt.subplots(3, 3)
     class1=axs[0, 0].scatter(Iris.iloc[:50, 0], Iris.iloc[:50, 1],color = 'hotpink')
     class2=axs[0, 0].scatter(Iris.iloc[50:100, 0], Iris.iloc[50:100, 1],color = 'green')
     class3=axs[0, 0].scatter(Iris.iloc[100:150, 0], Iris.iloc[100:150, 1],color = 'blue')
@@ -29,11 +29,11 @@ def DrawIris(Iris):
     axs[1, 1].scatter(Iris.iloc[100:150, 1], Iris.iloc[100:150, 3],color = 'blue')
     axs[1, 1].set_title("F2 vs F4")
 
-    axs[2, 1].scatter(Iris.iloc[:50, 2], Iris.iloc[:50, 3],color = 'hotpink')
-    axs[2, 1].scatter(Iris.iloc[50:100, 2], Iris.iloc[50:100, 3],color = 'green')
-    axs[2, 1].scatter(Iris.iloc[100:150, 2], Iris.iloc[100:150, 3],color = 'blue')
-    axs[2, 1].set_title("F3 vs F4")
-    plt.legend((class1, class2, class3),
+    axs[0, 2].scatter(Iris.iloc[:50, 2], Iris.iloc[:50, 3],color = 'hotpink')
+    axs[0, 2].scatter(Iris.iloc[50:100, 2], Iris.iloc[50:100, 3],color = 'green')
+    axs[0, 2].scatter(Iris.iloc[100:150, 2], Iris.iloc[100:150, 3],color = 'blue')
+    axs[0, 2].set_title("F3 vs F4")
+    axs[1, 2].legend((class1, class2, class3),
                      ('Iris-setosa', 'Iris-versicolor', 'Iris-virginica'),
                      scatterpoints=1,
                      loc='center',

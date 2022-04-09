@@ -1,8 +1,6 @@
 import numpy as np
-import Perceptron
 import pandas as pd
 import Plotter
-import Form
 import Pre
 import ConfusionMatrix
 import matplotlib.pyplot as plt

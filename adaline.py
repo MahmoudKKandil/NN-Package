@@ -1,3 +1,4 @@
+from turtle import shape
 import numpy as np
 
 
@@ -8,22 +9,22 @@ def predict(row, weights):
 
 def train_weights(trainX, TrainY, l_rate, n_epoch, threshold):
     trainX = np.array(trainX)
-    weights = np.random.rand(trainX.shape[1])
-
-    for epoch in range(n_epoch):
+    weights = np.zeros(trainX.shape[1])
+    for i in range(trainX.shape[1]):
+        weights[i] = np.random.uniform( -3,3)
+    for _ in range(n_epoch):
         for i, row in enumerate(trainX):
-            prediction = predict(row, weights)
-            error = TrainY[i] - prediction
-            weights = weights + l_rate * error * row
-        MSE = 0
+            res = weights.T.dot(row)
+            error = TrainY[i] - res
+            weights = weights + (l_rate * error * row)
+        sum = 0.0
         for i, row in enumerate(trainX):
             result = weights.T.dot(row)
             error = TrainY[i] - result
-            MSE += float(((0.5) * error * error))
-        MSE *= float((1 / trainX.size))
+            sum = sum + (0.5*(error **2))
+        MSE = sum / (len(trainX))
         if (MSE <= threshold):
-            break
-
+            return weights
     return weights
 
 def test_Data(testX, testY, weights):
@@ -49,6 +50,5 @@ def test_Data(testX, testY, weights):
                 FalseP+=1
             else:
                 FalseNeg+=1
-
     accuracy = (correct/len(testX))*100
     return accuracy,trueP,FalseP,FalseNeg,trueNeg

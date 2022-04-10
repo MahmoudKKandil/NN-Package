@@ -7,7 +7,6 @@ def predict(row, weights):
 def train_weights(trainX, TrainY, l_rate, n_epoch):
     trainX = np.array(trainX)
     weights = np.random.rand(trainX.shape[1])
-
     for epoch in range(n_epoch):
         for i, row in enumerate (trainX):
             prediction = predict(row, weights)

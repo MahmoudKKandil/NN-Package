@@ -43,7 +43,7 @@ def Task1MainForm():
         chosenC2['values'] = secList
 
     b = Button(Form1, text="Start", command=lambda: Form1.quit())
-    b.place(x=180, y=300)
+
     chosenC1.bind('<<ComboboxSelected>>', fillCB2Class)
     etaLabel = Label(Form1, text="Enter Learning rate(eta)")
     epochsLabel = Label(Form1, text="Enter number of epochs (m)")
@@ -56,5 +56,6 @@ def Task1MainForm():
     epochsLabel.pack()
     epochsTB.pack()
     biasCheckbox.pack()
+    b.pack()
     Form1.mainloop()
     return chosenF1.get(), chosenF2.get(), chosenC1.get(), chosenC2.get(), etaTB.get(), epochsTB.get(),var1.get()

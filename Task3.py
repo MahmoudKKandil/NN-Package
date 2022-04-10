@@ -12,9 +12,10 @@ bias = int(bias)
 NumberOfLayers = int(NumberOfLayers)
 NumberOfNeron=[]
 for i in NumberOfNerons.split(','):
-    NumberOfNeron.append(int(i)) #+1 for bias
-NumberOfNeron.append(3)#outputLayer
+    NumberOfNeron.append(int(i))
+NumberOfNeron.append(3)#outputLayer feha 3 neurons daymn
 
 data_train,data_test = Pre3.Encode(iris.iloc[:,1: 6],bias)
 Target=Pre3.Encode3(data_train)
-BackPropagation.Train(data_train.iloc[:,0: 5],Target,LearningRate,Epochs,NumberOfLayers,NumberOfNeron,4,bias)
+numberOfFeatures=4
+BackPropagation.Train(data_train.iloc[:,0: 5],Target,LearningRate,Epochs,NumberOfLayers,NumberOfNeron,numberOfFeatures,bias,chosenFunct)

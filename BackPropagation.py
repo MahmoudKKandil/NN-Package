@@ -1,10 +1,19 @@
 import numpy as np
 import random
+import math
 
-def forward(NumberOfLayers,row, weights,bias):
+def ActivationFunction(net,Function):
+  if Function=="SigmoidFunction":
+      result= 1/(1 + np.exp(-1*net))
+  else:
+      result = math.tanh(net)
+  return result
+
+def forward(NumberOfLayers,row, weights,bias,ActivFunction):
     for i in range(NumberOfLayers + 1):
      weight = np.array(weights[i])
-     result = weight.dot(row)
+     net = weight.dot(row)
+     result=ActivationFunction(net,ActivFunction)
      #7zawed el bias lel next iteration
      row=np.insert(result, 0, bias, axis=0)
     return result
@@ -38,11 +47,15 @@ def initialize_weights(NumberOfLayers,neurons,numberOfFeatures):
 
     return weights
 
-def Train(trainX, TrainY, l_rate, n_epoch,NumberOfLayers,neurons,numberOfFeatures,bias):
+
+def Train(trainX, TrainY, l_rate, n_epoch,NumberOfLayers,neurons,numberOfFeatures,bias,ActivFunction):
     trainX = np.array(trainX)
     weights = initialize_weights(NumberOfLayers,neurons,numberOfFeatures)
+    #bab3at el number of features 3shan de 3adad el neurons bta3et el input layer
     for epoch in range(n_epoch):
         for i, row in enumerate(trainX):
-            F = forward(NumberOfLayers,row, weights,bias)
-            print(F)
+            F = forward(NumberOfLayers,row, weights,bias,ActivFunction)
+            #kamel b2a  ya yong el backforward wel update
+            
+
     return weights

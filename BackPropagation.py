@@ -41,7 +41,7 @@ def back(arrayOfnetarrays,ActivFunction,weights,TrainY,bias,NumberOfLayers):
                         sNet=(TrainY[i]-arrayOfnetarrays[count][i])*BackActivationFunction(arrayOfnetarrays[count][i],ActivFunction)
                 else:
                     for j in range(len(oldS)):
-                        sNet+=(oldS[j]*weights[count+1][j][i+bias])
+                        sNet+=(oldS[j]*weights[count+1][j][i+1])
                     sNet*=BackActivationFunction(arrayOfnetarrays[count][i],ActivFunction)
                 newS.append(sNet)
                 sNet=0

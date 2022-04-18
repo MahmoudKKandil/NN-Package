@@ -41,7 +41,7 @@ def back(arrayOfnetarrays,ActivFunction,weights,TrainY,bias,NumberOfLayers):
                         sNet=(TrainY[i]-arrayOfnetarrays[count][i])*BackActivationFunction(arrayOfnetarrays[count][i],ActivFunction)
                 else:
                     for j in range(len(oldS)):
-                        sNet+=(oldS[j]*weights[count+1][j][i+1])
+                        sNet+=(oldS[j]*weights[count+1][j][i+bias])
                     sNet*=BackActivationFunction(arrayOfnetarrays[count][i],ActivFunction)
                 newS.append(sNet)
                 sNet=0
@@ -49,7 +49,6 @@ def back(arrayOfnetarrays,ActivFunction,weights,TrainY,bias,NumberOfLayers):
         arrOfSArrays.append(newS);
         newS=[]
     return arrOfSArrays
-
 def updatewights(arrOfSArrays,arrayOfnetarrays,weights,l_rate,bias,NumberOfLayers,row):
     for i in range(len(weights)):#layers
         for j in range(len(weights[i])):#neron index
@@ -59,14 +58,11 @@ def updatewights(arrOfSArrays,arrayOfnetarrays,weights,l_rate,bias,NumberOfLayer
                 else:
                     if(bias==1 and k==0):
                        x=1
-                    elif(bias==1):
+                    else:
                         # i-1 3shan elnet bybtdi mn awl layer b3d elinput, fah index ellayer hyb2a 1 eli hwa i bs elindex flnet 0
                         x = arrayOfnetarrays[i - 1][k - 1]
-                    else:
-                        x = arrayOfnetarrays[i - 1][k]
 
                 s = arrOfSArrays[i][j]
-
 
                 weights[i][j][k]= weights[i][j][k]+(l_rate*s*x)
 
@@ -109,9 +105,8 @@ def Train(trainX, TrainY, l_rate, n_epoch,NumberOfLayers,neurons,numberOfFeature
     for epoch in range(n_epoch):
         for i, row in enumerate(trainX):
             arrayOfnetarrays = forward(NumberOfLayers,row, weights,bias,ActivFunction)
-            print(arrayOfnetarrays)
-          #  arrOfSArrays=back(arrayOfnetarrays,ActivFunction,weights,TrainY[i],bias,NumberOfLayers)
-          #  arrOfSArrays=np.flipud(arrOfSArrays)#ana 3mlt reverse llarray 3shan 25li ellocal gradient bta3 eloutput hwa eli fl25er w yb2a bnfs tarteb elarray eli feh elnet
-           # updatewights(arrOfSArrays,arrayOfnetarrays,weights,l_rate,bias,NumberOfLayers,row)
+            arrOfSArrays=back(arrayOfnetarrays,ActivFunction,weights,TrainY[i],bias,NumberOfLayers)
+            arrOfSArrays=np.flipud(arrOfSArrays)#ana 3mlt reverse llarray 3shan 25li ellocal gradient bta3 eloutput hwa eli fl25er w yb2a bnfs tarteb elarray eli feh elnet
+            updatewights(arrOfSArrays,arrayOfnetarrays,weights,l_rate,bias,NumberOfLayers,row)
 
     return weights

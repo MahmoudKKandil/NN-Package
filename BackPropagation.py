@@ -7,7 +7,7 @@ def ActivationFunction(net,Function):
   if Function=="SigmoidFunction":
       result= 1/(1 + np.exp(-1*net))
   else:
-      result = math.tanh(net)
+      result = (1 - np.exp(-1 * net)) / (1 + np.exp(-1 * net))
   return result
 def BackActivationFunction(net,Function):
   if Function=="SigmoidFunction":

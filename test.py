@@ -1,7 +1,10 @@
 import numpy as np
 import math
-a = np.array([1,0,0])
-b = np.array([1,1,0])
+net = np.array([1,0,0])
+net=0.3
 c=0
-
-print(np.array_equal(a,b))
+result = 1 / (1 + np.exp(-1 * net))
+result = math.tanh(net)
+result2=(np.exp(net) - np.exp(-1 * net)) / (np.exp( net) + np.exp(-1 * net))
+print(result)
+print(result2)

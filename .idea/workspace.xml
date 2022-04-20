@@ -4,9 +4,6 @@
     <list default="true" id="c04b6dcc-7442-415c-bbbb-e007f9904d42" name="Default Changelist" comment="bias in updating weights.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BackPropagation.py" beforeDir="false" afterPath="$PROJECT_DIR$/BackPropagation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Form3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Form3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pre3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Pre3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Task3.py" beforeDir="false" afterPath="$PROJECT_DIR$/Task3.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -254,30 +251,30 @@
     <option name="LAST_COMMIT_MESSAGE" value="bias in updating weights." />
   </component>
   <component name="WindowStateProjectService">
-    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650400428072">
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1650480633855">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1650400428072" />
-    <state x="548" y="170" key="FileChooserDialogImpl" timestamp="1650400425237">
+    <state x="223" y="70" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1650480633855" />
+    <state x="548" y="170" key="FileChooserDialogImpl" timestamp="1650480632367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="548" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1650400425237" />
-    <state width="1502" height="210" key="GridCell.Tab.0.bottom" timestamp="1650415084601">
+    <state x="548" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1650480632367" />
+    <state width="1515" height="212" key="GridCell.Tab.0.bottom" timestamp="1650492330672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1502" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1650415084601" />
-    <state width="1502" height="210" key="GridCell.Tab.0.center" timestamp="1650415084601">
+    <state width="1515" height="212" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1650492330672" />
+    <state width="1515" height="212" key="GridCell.Tab.0.center" timestamp="1650492330672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1502" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1650415084601" />
-    <state width="1502" height="210" key="GridCell.Tab.0.left" timestamp="1650415084601">
+    <state width="1515" height="212" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1650492330672" />
+    <state width="1515" height="212" key="GridCell.Tab.0.left" timestamp="1650492330672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1502" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1650415084601" />
-    <state width="1502" height="210" key="GridCell.Tab.0.right" timestamp="1650415084601">
+    <state width="1515" height="212" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1650492330672" />
+    <state width="1515" height="212" key="GridCell.Tab.0.right" timestamp="1650492330672">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1502" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1650415084601" />
+    <state width="1515" height="212" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1650492330672" />
     <state width="1515" height="261" key="GridCell.Tab.1.bottom" timestamp="1650335567611">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

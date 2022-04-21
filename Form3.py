@@ -76,7 +76,9 @@ def Task3MainForm():
                                                               bias, chosenFunct)
         accuracy, Y_Actual, predY = BackPropagation.test_Data(data_test.iloc[:, 0: 5], testY, weights, NumberOfLayers,
                                                               bias, chosenFunct)
+        TrainAcc.delete(0,END)
         TrainAcc.insert(END, trainaccuracy)
+        TestAcc.delete(0,END)
         TestAcc.insert(END, accuracy)
         print("Train Accuracy: ",trainaccuracy )
         print("Test Accuracy: ",accuracy)

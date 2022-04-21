@@ -25,12 +25,10 @@ def Task3MainForm():
     epochsTB = Entry(form3)
     var1 = IntVar()
     biasCheckbox = ttk.Checkbutton(form3, variable=var1, text='add bias?', onvalue=1, offvalue=0)
-    TestAcc = Text(form3,
-                  bg="light cyan", height=2,
-                  width=10)
-    TrainAcc = Text(form3,
-                  bg="light cyan", height=2,
-                  width=10)
+    v1 = StringVar()
+    v2 = StringVar()
+    TestAcc = Entry(form3,textvariable=v1)
+    TrainAcc = Entry(form3,textvariable=v2)
     AccuracyLabel = Label(form3, text="Show Test Accuracy ")
     TrainAccuracyLabel = Label(form3, text="Show Train Accuracy ")
     NumOfLayersLabel.pack()
@@ -76,10 +74,8 @@ def Task3MainForm():
                                                               bias, chosenFunct)
         accuracy, Y_Actual, predY = BackPropagation.test_Data(data_test.iloc[:, 0: 5], testY, weights, NumberOfLayers,
                                                               bias, chosenFunct)
-        TrainAcc.delete(0,END)
-        TrainAcc.insert(END, trainaccuracy)
-        TestAcc.delete(0,END)
-        TestAcc.insert(END, accuracy)
+        v1.set(trainaccuracy)
+        v2.set(accuracy)
         print("Train Accuracy: ",trainaccuracy )
         print("Test Accuracy: ",accuracy)
         columns = ['SETOSA', 'VERSICOLR', 'VIRGINICA']

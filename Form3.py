@@ -2,9 +2,8 @@ from tkinter import *
 from tkinter import ttk
 import seaborn as sn
 import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix
 import pandas as pd
-import Form3
+import ConfusionMatrix3x3
 import Pre3
 import BackPropagation
 
@@ -79,7 +78,7 @@ def Task3MainForm():
         print("Train Accuracy: ",trainaccuracy )
         print("Test Accuracy: ",accuracy)
         columns = ['SETOSA', 'VERSICOLR', 'VIRGINICA']
-        cm = confusion_matrix(Y_Actual, predY, labels=columns)
+        cm = ConfusionMatrix3x3.CofusionMatrix(Y_Actual, predY)
         df_cm = pd.DataFrame(cm, columns, columns)
         ax = sn.heatmap(df_cm, annot=True, annot_kws={"size": 16}, square=True, cbar=False, fmt='g')
         ax.set_ylim(0, 3)

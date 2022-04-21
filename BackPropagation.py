@@ -1,6 +1,5 @@
 import numpy as np
 import random
-import math
 
 
 def ActivationFunction(net, Function):
